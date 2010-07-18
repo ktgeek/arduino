@@ -14,11 +14,11 @@ void LightModel::setup()
 {
     pinMode(RED_LIGHT, OUTPUT);
     pinMode(AMBER_LIGHT, OUTPUT);
-    pinMode(RED_LIGHT, OUTPUT);
+    pinMode(GREEN_LIGHT, OUTPUT);
 
     // Ensure that all lights are off at the start
     digitalWrite(RED_LIGHT, LOW);
     digitalWrite(AMBER_LIGHT, LOW);
-    digitalWrite(RED_LIGHT, LOW);
+    digitalWrite(GREEN_LIGHT, LOW);
 }
 
