@@ -1,0 +1,5 @@
+Since the Arduino editor kinda blows in comparison to emacs, this
+folder will hold various emacs stuff I found useful to develop with
+the Arduino.
+
+arduino-mode.el is from http://github.com/bookest/arduino-mode.git
