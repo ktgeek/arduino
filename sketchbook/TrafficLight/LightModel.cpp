@@ -9,6 +9,9 @@ const byte LightModel::RED_ON = 0x1;
 const byte LightModel::AMBER_ON = 0x2;
 const byte LightModel::GREEN_ON = 0x4;
 
+const bool LightModel::ON = true;
+const bool LightModel::OFF = false;
+
 LightModel::LightModel()
   : state(0)
 {
