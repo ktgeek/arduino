@@ -67,3 +67,12 @@ void RandomLightController::tick()
     }
     mTickCount++;
 }
+
+EuropeanLightController::EuropeanLightController() : LightController()
+{
+}
+
+void EuropeanLightController::tick()
+{
+    mTickCount++;
+}

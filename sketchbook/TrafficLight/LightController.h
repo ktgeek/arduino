@@ -23,9 +23,6 @@ class USLightController : public LightController
   public:
     USLightController();
     virtual void tick();
-    
-  private:
-    int tick_count;
 };
 
 class RandomLightController : public LightController
@@ -36,6 +33,12 @@ class RandomLightController : public LightController
 
 };
 
+class EuropeanLightController : public LightController
+{
+  public:
+    EuropeanLightController();
+    virtual void tick();
+};
 
 #endif /* LIGHTCONTROLLER_H */
 
