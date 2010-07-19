@@ -9,15 +9,6 @@ class LightModel
     LightModel();
     void setup();
 
-    void setRed(bool on);
-    void setAmber(bool on);
-    void setGreen(bool on);
-
-    
-    bool isRedOn();
-    bool isAmberOn();
-    bool isGreenOn();
-
     void setState(byte newState);
         
     static const bool ON;
