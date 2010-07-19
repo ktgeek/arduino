@@ -1,21 +1,25 @@
 #include "LightModel.h"
+#include "LightController.h"
 
 LightModel lightModel;
 
+LightController* lc;
+USLightController uslc;
+RandomLightController rlc;
+
+
 void setup()
 {
+  randomSeed(analogRead(0));
+
   lightModel.setup();
+  LightController::setLightModel(&lightModel);
+//  lc = &uslc;
+  lc = &rlc;
 }
 
 void loop()
 {
-  lightModel.setRed(true);
+  lc->tick();
   delay(500);
-  lightModel.setRed(false);
-  lightModel.setGreen(true);
-  delay(500);
-  lightModel.setGreen(false);
-  lightModel.setAmber(true);
-  delay(500);
-  lightModel.setAmber(false);
 }
