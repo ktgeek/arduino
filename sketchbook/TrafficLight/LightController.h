@@ -15,7 +15,7 @@ class LightController
 
   protected:
     static LightModel* sLightModel;
-    int mTickCount;
+    unsigned long mBaseTimeMillis;
 };
 
 class USLightController : public LightController
@@ -23,6 +23,12 @@ class USLightController : public LightController
   public:
     USLightController();
     virtual void tick();
+    virtual void reset();
+
+  private:
+    static const unsigned long times[];
+    static const byte states[];
+    short mState;
 };
 
 class RandomLightController : public LightController
@@ -30,7 +36,6 @@ class RandomLightController : public LightController
   public:
     RandomLightController();
     virtual void tick();
-
 };
 
 class EuropeanLightController : public LightController

@@ -5,7 +5,7 @@
 LightModel* LightController::sLightModel = 0;
 
 LightController::LightController()
-    : mTickCount(0)
+
 {
 }
 
@@ -17,37 +17,42 @@ void LightController::setLightModel(LightModel* lm)
 void LightController::reset()
 {
     sLightModel->setState(0);
-    mTickCount = 0;
+    mBaseTimeMillis = millis();
 }
 
-USLightController::USLightController() : LightController()
+USLightController::USLightController() : LightController(), mState(0)
 {
 }
+
+void USLightController::reset()
+{
+    LightController::reset();
+    sLightModel->setState(LightModel::RED_ON);
+    mState = 0;
+}
+
+const unsigned long USLightController::times[] = {25000, 50000, 58000};
+const byte USLightController::states[] =
+{
+    LightModel::GREEN_ON,
+    LightModel::AMBER_ON,
+    LightModel::RED_ON
+};
 
 void USLightController::tick()
 {
-    switch(mTickCount)
+    unsigned long time = millis();
+    unsigned long diff = time - mBaseTimeMillis;
+
+    if (diff >= times[mState])
     {
-        // Initial state is red
-        case 0:
-            sLightModel->setState(LightModel::RED_ON);
-            break;
-
-        // 25 seconds later go green
-        case 250:
-            sLightModel->setState(LightModel::GREEN_ON);
-            break;
-
-         // 25 seconds later go yellow for 8 seconds
-        case 500:
-            sLightModel->setState(LightModel::AMBER_ON);
-            break;
-
-        case 580:
-            mTickCount = -1;
-            break;
+        sLightModel->setState(states[mState++]);
+        if(mState > 2)
+        {
+            mBaseTimeMillis = time;
+            mState = 0;
+        }
     }
-    mTickCount++;
 }
 
 RandomLightController::RandomLightController() : LightController()
@@ -56,16 +61,15 @@ RandomLightController::RandomLightController() : LightController()
 
 void RandomLightController::tick()
 {
-    if (mTickCount > 4)
-    {
-        mTickCount = 0;
-    }
-    if (!mTickCount)
+    unsigned long time = millis();
+    unsigned long diff = time - mBaseTimeMillis;
+
+    if (diff >= 400)
     {
         byte newState = random(7);
         sLightModel->setState(newState);
+        mBaseTimeMillis = time;
     }
-    mTickCount++;
 }
 
 EuropeanLightController::EuropeanLightController() : LightController()
@@ -74,5 +78,4 @@ EuropeanLightController::EuropeanLightController() : LightController()
 
 void EuropeanLightController::tick()
 {
-    mTickCount++;
 }
