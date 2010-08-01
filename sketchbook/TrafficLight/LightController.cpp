@@ -15,7 +15,7 @@ void LightController::setLightModel(LightModel* lm)
 
 void LightController::reset()
 {
-    sLightModel->setState(0);
+    sLightModel->setState(LightModel::ALL_OFF);
     mBaseTimeMillis = millis();
 }
 

@@ -10,7 +10,8 @@ class LightModel
     void setup();
 
     void setState(byte newState);
-        
+
+    static const byte ALL_OFF;
     static const byte RED_ON;
     static const byte AMBER_ON;
     static const byte GREEN_ON;
