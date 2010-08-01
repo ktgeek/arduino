@@ -5,7 +5,6 @@
 LightModel* LightController::sLightModel = 0;
 
 LightController::LightController()
-
 {
 }
 
