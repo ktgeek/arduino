@@ -1,4 +1,4 @@
-#include "WProgram.h"
+#include "Arduino.h"
 #include "LightModel.h"
 
 const byte LightModel::RED_ON = 0x1;
