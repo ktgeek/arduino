@@ -1,4 +1,4 @@
-#include "WProgram.h"
+#include "Arduino.h"
 #include "LightController.h"
 #include "LightModel.h"
 
