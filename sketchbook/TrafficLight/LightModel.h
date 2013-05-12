@@ -17,6 +17,8 @@ class LightModel
     static const byte GREEN_ON;
 
   private:
+//    void prettyPrintState(byte state);
+    
     byte state;
 };
 

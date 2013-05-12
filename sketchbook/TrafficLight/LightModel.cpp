@@ -25,7 +25,31 @@ void LightModel::setup()
 // bitshift it over twice to match our input.
 void LightModel::setState(byte newState)
 {
-    state = newState << 3;
+    state = newState << 4;
+
+//    prettyPrintState(newState);
     
     PORTD = state;
-}        
+}
+
+// void LightModel::prettyPrintState(byte state)
+// {
+//     Serial.print("Set state to: ");
+//     if (state & RED_ON)
+//     {
+//         Serial.print("RED ");
+//     }
+
+//     if (state & AMBER_ON)
+//     {
+//         Serial.print("AMBER ");
+//     }
+
+//     if (state & GREEN_ON)
+//     {
+//         Serial.print("GREEN ");
+//     }
+
+//     Serial.println(".");
+    
+// }

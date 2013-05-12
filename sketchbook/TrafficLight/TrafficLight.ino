@@ -30,6 +30,9 @@ void switchController()
 
 void setup()
 {
+  // Set up serial for debuggin
+//  Serial.begin(9600);
+
   // Set up the random number generator
   randomSeed(analogRead(0));
 
